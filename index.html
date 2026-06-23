@@ -34,7 +34,6 @@
   }
   button{ font-family:inherit; }
 
-  /* ---------- sprocket strip, the recurring motif ---------- */
   .sprockets{
     height:14px;
     width:100%;
@@ -45,11 +44,7 @@
     flex:none;
   }
 
-  .app{
-    height:100%;
-    display:flex;
-    flex-direction:column;
-  }
+  .app{ height:100%; display:flex; flex-direction:column; }
 
   header.top{
     flex:none;
@@ -59,384 +54,224 @@
     justify-content:space-between;
     gap:12px;
   }
-  header.top .word{
-    font-family:var(--display);
-    font-size:22px;
-    letter-spacing:.5px;
-  }
+  header.top .word{ font-family:var(--display); font-size:22px; letter-spacing:.5px; }
   header.top .word em{ color:var(--audio); font-style:normal; }
-  header.top .tag{
-    font-size:11px;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-  }
+  header.top .tag{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); }
 
   main{
-    flex:1;
-    min-height:0;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+    flex:1; min-height:0; position:relative;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
   }
 
-  /* ---------- idle / picker screen ---------- */
-  .screen{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
+  /* ---------- screens ---------- */
+  .screen{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+
+  /* idle */
   .picker-card{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:18px;
-    padding:0 28px;
-    text-align:center;
-    max-width:380px;
+    display:flex; flex-direction:column; align-items:center;
+    gap:18px; padding:0 28px; text-align:center; max-width:380px;
   }
   .leader{
-    width:148px;
-    height:148px;
-    border-radius:50%;
-    border:1.5px dashed var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
+    width:148px; height:148px; border-radius:50%;
+    border:1.5px dashed var(--line); display:flex; align-items:center;
+    justify-content:center; position:relative;
     transition:border-color .2s, background .2s;
   }
-  .leader.drag-over{
-    border-color:var(--audio);
-    background:rgba(232,163,61,0.06);
-  }
+  .leader.drag-over{ border-color:var(--audio); background:rgba(232,163,61,0.06); }
   .leader svg{ width:46px; height:46px; }
-  .leader .ring{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-  }
-  .leader .ring circle{
-    fill:none;
-    stroke:var(--line);
-    stroke-width:1;
-  }
-  .leader .tick{
-    position:absolute;
-    inset:0;
-  }
-  h1.lead{
-    font-family:var(--display);
-    font-size:21px;
-    font-weight:400;
-    margin:0;
-  }
-  p.sub{
-    margin:0;
-    color:var(--text-muted);
-    font-size:13.5px;
-    line-height:1.5;
-  }
+  h1.lead{ font-family:var(--display); font-size:21px; font-weight:400; margin:0; }
+  p.sub{ margin:0; color:var(--text-muted); font-size:13.5px; line-height:1.5; }
   .btn{
-    appearance:none;
-    border:none;
-    cursor:pointer;
-    font-size:14.5px;
-    font-weight:600;
-    border-radius:10px;
-    padding:13px 22px;
-    transition:transform .12s, opacity .12s;
+    appearance:none; border:none; cursor:pointer;
+    font-size:14.5px; font-weight:600; border-radius:10px;
+    padding:13px 22px; transition:transform .12s, opacity .12s;
   }
   .btn:active{ transform:scale(.97); }
-  .btn-primary{
-    background:var(--audio);
-    color:#1A1303;
-  }
-  .btn-ghost{
-    background:transparent;
-    color:var(--text-muted);
-    border:1px solid var(--line);
-  }
-  .fineprint{
-    font-size:11.5px;
-    color:var(--text-muted);
-    opacity:.75;
-    max-width:300px;
-    line-height:1.5;
-  }
+  .btn-primary{ background:var(--audio); color:#1A1303; }
+  .btn-ghost{ background:transparent; color:var(--text-muted); border:1px solid var(--line); }
+  .btn:disabled{ opacity:.35; cursor:default; transform:none; }
+  .fineprint{ font-size:11.5px; color:var(--text-muted); opacity:.75; max-width:300px; line-height:1.5; }
   .resume-pill{
-    font-family:var(--mono);
-    font-size:11.5px;
-    color:var(--sub);
-    background:var(--sub-dim);
-    border-radius:7px;
-    padding:6px 10px;
-    display:inline-flex;
-    gap:6px;
-    align-items:center;
+    font-family:var(--mono); font-size:11.5px; color:var(--sub);
+    background:var(--sub-dim); border-radius:7px; padding:6px 10px;
+    display:inline-flex; gap:6px; align-items:center;
   }
 
-  /* ---------- processing screen ---------- */
+  /* ---------- track selection screen ---------- */
+  .select-card{
+    width:100%; max-width:440px; padding:0 24px;
+    display:flex; flex-direction:column; gap:0;
+    height:100%; overflow-y:auto;
+    padding-top:12px;
+    padding-bottom:calc(16px + env(safe-area-inset-bottom));
+  }
+  .select-file{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-muted);
+    word-break:break-all; margin-bottom:18px;
+  }
+  .select-title{
+    font-family:var(--display); font-size:19px; margin-bottom:4px;
+  }
+  .select-hint{ font-size:13px; color:var(--text-muted); margin-bottom:22px; line-height:1.5; }
+  .select-group{ margin-bottom:22px; }
+  .select-group-label{
+    font-size:11px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--text-muted); margin-bottom:10px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .dot{ width:7px; height:7px; border-radius:50%; }
+  .dot.audio-c{ background:var(--audio); }
+  .dot.sub-c{ background:var(--sub); }
+
+  .sel-row{
+    display:flex; align-items:center; gap:14px;
+    padding:13px 16px; background:var(--panel);
+    border:1px solid var(--line); border-radius:12px;
+    margin-bottom:8px; cursor:pointer;
+    transition:border-color .15s, background .15s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .sel-row:last-child{ margin-bottom:0; }
+  .sel-row.checked-audio{ border-color:var(--audio); background:var(--audio-dim); }
+  .sel-row.checked-sub{ border-color:var(--sub); background:var(--sub-dim); }
+  .sel-check{
+    width:22px; height:22px; border-radius:50%;
+    border:1.5px solid var(--line); flex:none;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .15s, border-color .15s;
+  }
+  .sel-row.checked-audio .sel-check{ background:var(--audio); border-color:var(--audio); }
+  .sel-row.checked-sub .sel-check{ background:var(--sub); border-color:var(--sub); }
+  .sel-check svg{ display:none; width:13px; height:13px; }
+  .sel-row.checked-audio .sel-check svg,
+  .sel-row.checked-sub .sel-check svg{ display:block; }
+  .sel-meta{ flex:1; min-width:0; }
+  .sel-name{ font-size:14.5px; font-weight:500; }
+  .sel-codec{ font-family:var(--mono); font-size:11px; color:var(--text-muted); margin-top:2px; }
+  .sel-badge{
+    font-size:10px; font-family:var(--mono); padding:3px 7px;
+    border-radius:6px; background:var(--panel-alt); color:var(--text-muted); flex:none;
+  }
+  .sel-row.checked-audio .sel-badge{ background:rgba(232,163,61,.15); color:var(--audio); }
+  .sel-row.checked-sub .sel-badge{ background:rgba(79,168,160,.15); color:var(--sub); }
+  .sel-warn{ font-size:12px; color:var(--warn); margin-top:6px; display:none; }
+  .sel-warn.show{ display:block; }
+
+  .select-actions{ display:flex; gap:10px; padding-top:6px; }
+  .select-actions .btn{ flex:1; }
+
+  /* ---------- processing ---------- */
   .processing-card{
-    width:100%;
-    max-width:420px;
-    padding:0 28px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+    width:100%; max-width:420px; padding:0 28px;
+    display:flex; flex-direction:column; gap:16px;
   }
-  .proc-title{
-    font-family:var(--display);
-    font-size:19px;
-  }
-  .proc-file{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-muted);
-    word-break:break-all;
-  }
-  .bar{
-    height:6px;
-    border-radius:4px;
-    background:var(--panel-alt);
-    overflow:hidden;
-  }
+  .proc-title{ font-family:var(--display); font-size:19px; }
+  .proc-file{ font-family:var(--mono); font-size:12px; color:var(--text-muted); word-break:break-all; }
+  .bar{ height:6px; border-radius:4px; background:var(--panel-alt); overflow:hidden; }
   .bar-fill{
-    height:100%;
-    width:0%;
+    height:100%; width:0%;
     background:linear-gradient(90deg, var(--audio), var(--sub));
     transition:width .25s ease;
   }
   .log{
-    font-family:var(--mono);
-    font-size:11.5px;
-    color:var(--text-muted);
-    max-height:140px;
-    overflow-y:auto;
-    line-height:1.6;
-    border-top:1px solid var(--line);
-    padding-top:10px;
+    font-family:var(--mono); font-size:11.5px; color:var(--text-muted);
+    max-height:160px; overflow-y:auto; line-height:1.6;
+    border-top:1px solid var(--line); padding-top:10px;
   }
   .log .line.ok::before{ content:"✓ "; color:var(--sub); }
   .log .line.skip::before{ content:"– "; color:var(--warn); }
   .log .line.now{ color:var(--text); }
 
-  /* ---------- player screen ---------- */
-  .player-wrap{
-    width:100%;
-    height:100%;
-    position:relative;
-    background:#000;
-  }
-  video{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#000;
-    display:block;
-  }
-  video::cue{
-    font-family:var(--ui);
-    font-size:1.05em;
-    background:rgba(0,0,0,.55);
-  }
+  /* ---------- player ---------- */
+  .player-wrap{ width:100%; height:100%; position:relative; background:#000; }
+  video{ width:100%; height:100%; object-fit:contain; background:#000; display:block; }
+  video::cue{ font-family:var(--ui); font-size:1.05em; background:rgba(0,0,0,.55); }
 
   .controls{
-    position:absolute;
-    left:0; right:0; bottom:0;
+    position:absolute; left:0; right:0; bottom:0;
     padding:10px 14px calc(12px + env(safe-area-inset-bottom));
     background:linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.45) 60%, transparent);
-    display:flex;
-    flex-direction:column;
-    gap:8px;
+    display:flex; flex-direction:column; gap:8px;
     transition:opacity .25s;
   }
   .controls.hidden{ opacity:0; pointer-events:none; }
 
-  .scrub-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .time{
-    font-family:var(--mono);
-    font-size:11.5px;
-    color:var(--text-muted);
-    min-width:42px;
-    text-align:center;
-  }
+  .scrub-row{ display:flex; align-items:center; gap:10px; }
+  .time{ font-family:var(--mono); font-size:11.5px; color:var(--text-muted); min-width:42px; text-align:center; }
   input[type=range]{
-    -webkit-appearance:none;
-    flex:1;
-    height:4px;
-    background:rgba(255,255,255,.18);
-    border-radius:3px;
-    outline:none;
+    -webkit-appearance:none; flex:1; height:4px;
+    background:rgba(255,255,255,.18); border-radius:3px; outline:none;
   }
   input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none;
-    width:14px; height:14px;
-    border-radius:50%;
-    background:var(--audio);
-    border:none;
-    margin-top:0;
+    -webkit-appearance:none; width:14px; height:14px;
+    border-radius:50%; background:var(--audio); border:none;
   }
-
-  .btn-row{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:26px;
-  }
+  .btn-row{ display:flex; align-items:center; justify-content:center; gap:26px; }
   .ctl-btn{
-    appearance:none;
-    background:none;
-    border:none;
-    color:var(--text);
-    cursor:pointer;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:2px;
-    padding:6px;
+    appearance:none; background:none; border:none; color:var(--text);
+    cursor:pointer; display:flex; flex-direction:column;
+    align-items:center; gap:2px; padding:6px;
   }
   .ctl-btn svg{ width:26px; height:26px; }
   .ctl-btn.play svg{ width:32px; height:32px; }
   .ctl-btn .lbl{ font-size:9px; font-family:var(--mono); color:var(--text-muted); }
 
-  .right-row{
-    position:absolute;
-    right:14px;
-    bottom: calc(54px + env(safe-area-inset-bottom));
-    display:flex;
-    gap:10px;
-  }
+  .right-row{ position:absolute; right:14px; bottom:calc(54px + env(safe-area-inset-bottom)); display:flex; gap:10px; }
   .pill-btn{
-    appearance:none;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.4);
-    color:var(--text);
-    border-radius:20px;
-    padding:8px 14px;
-    font-size:12px;
-    display:flex;
-    align-items:center;
-    gap:6px;
+    appearance:none; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.4);
+    color:var(--text); border-radius:20px; padding:8px 14px;
+    font-size:12px; display:flex; align-items:center; gap:6px;
   }
   .pill-btn svg{ width:14px; height:14px; }
 
-  /* ---------- track sheet ---------- */
-  .sheet-backdrop{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .2s;
-  }
+  /* track sheet */
+  .sheet-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.5); opacity:0; pointer-events:none; transition:opacity .2s; }
   .sheet-backdrop.open{ opacity:1; pointer-events:auto; }
   .sheet{
-    position:absolute;
-    left:0; right:0; bottom:0;
-    background:var(--panel);
-    border-top:1px solid var(--line);
+    position:absolute; left:0; right:0; bottom:0;
+    background:var(--panel); border-top:1px solid var(--line);
     border-radius:18px 18px 0 0;
     padding:6px 20px calc(22px + env(safe-area-inset-bottom));
-    transform:translateY(100%);
-    transition:transform .25s ease;
+    transform:translateY(100%); transition:transform .25s ease;
   }
   .sheet.open{ transform:translateY(0); }
-  .sheet-grab{
-    width:36px; height:4px; border-radius:3px;
-    background:var(--line);
-    margin:10px auto 14px;
-  }
+  .sheet-grab{ width:36px; height:4px; border-radius:3px; background:var(--line); margin:10px auto 14px; }
   .sheet-group{ margin-bottom:18px; }
   .sheet-group:last-child{ margin-bottom:0; }
   .sheet-label{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-    color:var(--text-muted);
-    margin-bottom:10px;
-    display:flex;
-    align-items:center;
-    gap:6px;
+    font-size:11px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--text-muted); margin-bottom:10px;
+    display:flex; align-items:center; gap:6px;
   }
-  .dot{ width:7px; height:7px; border-radius:50%; }
-  .dot.audio-c{ background:var(--audio); }
-  .dot.sub-c{ background:var(--sub); }
-  .track-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
+  .track-row{ display:flex; flex-wrap:wrap; gap:8px; }
   .track-pill{
-    appearance:none;
-    border:1px solid var(--line);
-    background:var(--panel-alt);
-    color:var(--text);
-    border-radius:10px;
-    padding:10px 14px;
-    font-size:13.5px;
-    text-align:left;
+    appearance:none; border:1px solid var(--line); background:var(--panel-alt);
+    color:var(--text); border-radius:10px; padding:10px 14px;
+    font-size:13.5px; text-align:left;
   }
-  .track-pill .codec{
-    display:block;
-    font-family:var(--mono);
-    font-size:10px;
-    color:var(--text-muted);
-    margin-top:2px;
-  }
-  .track-pill.active.audio-active{
-    border-color:var(--audio);
-    background:var(--audio-dim);
-  }
-  .track-pill.active.sub-active{
-    border-color:var(--sub);
-    background:var(--sub-dim);
-  }
-  .track-pill.unsupported{
-    opacity:.45;
-  }
-  .track-pill.unsupported .codec::after{
-    content:" · image-based, can't extract";
-  }
+  .track-pill .codec{ display:block; font-family:var(--mono); font-size:10px; color:var(--text-muted); margin-top:2px; }
+  .track-pill.active.audio-active{ border-color:var(--audio); background:var(--audio-dim); }
+  .track-pill.active.sub-active{ border-color:var(--sub); background:var(--sub-dim); }
+  .track-pill.unsupported{ opacity:.45; }
+  .track-pill.unsupported .codec::after{ content:" · image-based, can't extract"; }
 
   .toast{
-    position:absolute;
-    top:18px; left:50%;
+    position:absolute; top:18px; left:50%;
     transform:translateX(-50%) translateY(-10px);
-    background:var(--panel);
-    border:1px solid var(--line);
-    color:var(--text);
-    font-size:12.5px;
-    padding:9px 16px;
-    border-radius:10px;
-    opacity:0;
-    transition:opacity .2s, transform .2s;
-    pointer-events:none;
-    z-index:20;
-    max-width:80%;
-    text-align:center;
+    background:var(--panel); border:1px solid var(--line);
+    color:var(--text); font-size:12.5px; padding:9px 16px;
+    border-radius:10px; opacity:0; transition:opacity .2s, transform .2s;
+    pointer-events:none; z-index:20; max-width:80%; text-align:center;
   }
   .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
-
   .hide{ display:none !important; }
-
   ::-webkit-scrollbar{ width:0; height:0; }
 </style>
 </head>
 <body>
 
 <div class="app">
-
   <div class="sprockets"></div>
-
   <header class="top">
     <div class="word">R<em>e</em>el</div>
     <div class="tag" id="topTag">local mkv player</div>
@@ -444,7 +279,7 @@
 
   <main id="main">
 
-    <!-- ============ IDLE / PICKER ============ -->
+    <!-- IDLE -->
     <div class="screen" id="screenIdle">
       <div class="picker-card">
         <div class="leader" id="dropZone">
@@ -454,11 +289,36 @@
         <p class="sub">Pick an .mkv file. It's read and converted entirely on this iPad — nothing is uploaded anywhere.</p>
         <button class="btn btn-primary" id="chooseBtn">Choose Video</button>
         <div id="resumeNotice" class="hide"></div>
-        <p class="fineprint">First run downloads a ~30&nbsp;MB in‑browser conversion engine once. After that it works without a connection.</p>
+        <p class="fineprint">First run loads a ~30&nbsp;MB in-browser conversion engine once. Works offline after that.</p>
       </div>
     </div>
 
-    <!-- ============ PROCESSING ============ -->
+    <!-- TRACK SELECTION -->
+    <div class="screen hide" id="screenSelect">
+      <div class="select-card">
+        <div class="select-title">Choose tracks to extract</div>
+        <div class="select-file" id="selFileName"></div>
+        <div class="select-hint">Only selected tracks will be processed — deselect languages you don't need to save time.</div>
+
+        <div class="select-group" id="selAudioGroup">
+          <div class="select-group-label"><span class="dot audio-c"></span>Audio tracks</div>
+          <div id="selAudioList"></div>
+          <div class="sel-warn" id="selAudioWarn">Select at least one audio track.</div>
+        </div>
+
+        <div class="select-group" id="selSubGroup">
+          <div class="select-group-label"><span class="dot sub-c"></span>Subtitle tracks</div>
+          <div id="selSubList"></div>
+        </div>
+
+        <div class="select-actions">
+          <button class="btn btn-ghost" id="selBackBtn">Back</button>
+          <button class="btn btn-primary" id="selGoBtn">Extract Selected</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESSING -->
     <div class="screen hide" id="screenProcessing">
       <div class="processing-card">
         <div class="proc-title" id="procTitle">Reading your file…</div>
@@ -468,16 +328,19 @@
       </div>
     </div>
 
-    <!-- ============ PLAYER ============ -->
+    <!-- PLAYER -->
     <div class="screen hide" id="screenPlayer" style="padding:0;">
       <div class="player-wrap" id="playerWrap">
         <video id="video" playsinline webkit-playsinline></video>
-
         <div class="toast" id="toast"></div>
 
         <div class="right-row" id="rightRow">
           <button class="pill-btn" id="tracksBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h12M4 12h8M4 18h16"/><circle cx="19" cy="6" r="2" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="2" fill="currentColor" stroke="none"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6h12M4 12h8M4 18h16"/>
+              <circle cx="19" cy="6" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="15" cy="18" r="2" fill="currentColor" stroke="none"/>
+            </svg>
             <span id="tracksBtnLabel">Tracks</span>
           </button>
         </div>
@@ -490,14 +353,18 @@
           </div>
           <div class="btn-row">
             <button class="ctl-btn" id="backBtn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12a7 7 0 1 0 2-4.9"/><path d="M5 5v3.5H8.5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M5 12a7 7 0 1 0 2-4.9"/><path d="M5 5v3.5H8.5"/>
+              </svg>
               <span class="lbl">10</span>
             </button>
             <button class="ctl-btn play" id="playBtn">
               <svg viewBox="0 0 24 24" fill="currentColor" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
             </button>
             <button class="ctl-btn" id="fwdBtn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" transform="scale(-1,1)"><path d="M5 12a7 7 0 1 0 2-4.9"/><path d="M5 5v3.5H8.5"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" transform="scale(-1,1)">
+                <path d="M5 12a7 7 0 1 0 2-4.9"/><path d="M5 5v3.5H8.5"/>
+              </svg>
               <span class="lbl">10</span>
             </button>
           </div>
@@ -519,7 +386,6 @@
     </div>
 
   </main>
-
   <div class="sprockets"></div>
 </div>
 
